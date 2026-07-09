@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <h1>Weather App</h1>
+
+    <div class="navbar">
+      <p data-your class="inWeather">Your Weather</p>
+      <p data-search class="inWeather">Search Weather</p>
+    </div>
+
+    <div class="weather-container">
+
+      <!-- Grant Location Access -->
+      <div data-grantLocation class="sub-container grantLocation">
+        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" width="80" height="80" alt="location icon">
+        <p>Grant Location Access</p>
+        <p>Allow Access To Get Weather Information</p>
+        <button type="button" class="btn">Grant Access</button>
+      </div>
+
+      <!-- Search Weather -->
+      <form class="sub-container form-container" data-searchform>
+        <input data-searchInput placeholder="Search for a city...">
+        <button type="submit" class="btn">
+          🔍
+        </button>
+      </form>
+
+      <!-- Your Weather / Search Result -->
+      <div data-yourWeather class="sub-container yourWeather">
+        <div class="name">
+          <p data-city class="cityName"></p>
+          <img data-country class="countryIcon" alt="country flag">
+        </div>
+        <p class="desc" data-desc></p>
+        <img class="descIcon" data-descIcon alt="weather icon">
+        <p class="tempx" data-temp></p>
+
+        <div class="parameter-container">
+          <div class="parameter">
+            <img src="https://cdn-icons-png.flaticon.com/512/3829/3829950.png" alt="wind" width="50" height="50">
+            <p>WINDSPEED</p>
+            <p data-windspeed class="meausre"></p>
+          </div>
+          <div class="parameter">
+            <img src="https://cdn-icons-png.flaticon.com/512/1163/1163624.png" alt="humidity" width="50" height="50">
+            <p>HUMIDITY</p>
+            <p data-humidity class="meausre"></p>
+          </div>
+          <div class="parameter">
+            <img src="https://cdn-icons-png.flaticon.com/512/414/414927.png" alt="clouds" width="50" height="50">
+            <p>CLOUDS</p>
+            <p data-clouds class="meausre"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <div class="sub-container loading" data-loading>
+        <div class="spinner"></div>
+        <p>Loading...</p>
+      </div>
+
+      <!-- Error -->
+      <div class="sub-container error-container" data-error>
+        <p data-errorMsg>Something went wrong.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
