@@ -1,4 +1,3 @@
-// ─── Element References ────────────────────────────────────────────────
 const yourweatherContainer = document.querySelector("[data-yourWeather]");
 const yourTab              = document.querySelector("[data-your]");
 const searchTab            = document.querySelector("[data-search]");
@@ -8,16 +7,13 @@ const searchformview       = document.querySelector("[data-searchform]");   // F
 const errorContainer       = document.querySelector("[data-error]");
 const errorMsg             = document.querySelector("[data-errorMsg]");
 
-// ─── API Key ───────────────────────────────────────────────────────────
 const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
 
-// ─── Tab State ─────────────────────────────────────────────────────────
 let currentTab = yourTab;
 currentTab.classList.add("current-tab");
 
 getfromSessionStorage();
 
-// ─── Tab Switching ─────────────────────────────────────────────────────
 function switchTab(clickedTab) {
     if (currentTab !== clickedTab) {
         currentTab.classList.remove("current-tab");
@@ -43,7 +39,6 @@ function switchTab(clickedTab) {
 yourTab.addEventListener("click",   () => switchTab(yourTab));
 searchTab.addEventListener("click", () => switchTab(searchTab));
 
-// ─── Session Storage ───────────────────────────────────────────────────
 function getfromSessionStorage() {
     const localCoordinates = sessionStorage.getItem("user-coordinates");
     if (!localCoordinates) {
@@ -54,8 +49,6 @@ function getfromSessionStorage() {
     }
 }
 
-// ─── Fetch by GPS Coordinates (Your Weather tab) ───────────────────────
-// Uses lat/lon — NOT city name, because we get location from the browser GPS
 async function fetchUserWeatherInfo(coordinates) {
     const { lat, lon } = coordinates;
 
@@ -84,9 +77,6 @@ async function fetchUserWeatherInfo(coordinates) {
     }
 }
 
-// ─── Fetch by City Name (Search tab) ──────────────────────────────────
-// The search tab still uses ?q=cityName — that is correct and intentional.
-// OpenWeatherMap supports both lat/lon (for GPS) and q=city (for search).
 async function fetchSearchWeatherInfo(city) {
     loadingTab.classList.add("active");
     yourweatherContainer.classList.remove("active");
@@ -113,7 +103,6 @@ async function fetchSearchWeatherInfo(city) {
     }
 }
 
-// ─── Render Weather Data ───────────────────────────────────────────────
 function renderWeatherInfo(weatherInfo) {
     const cloudsTab   = document.querySelector("[data-clouds]");
     const humidityTab = document.querySelector("[data-humidity]");
@@ -136,13 +125,11 @@ function renderWeatherInfo(weatherInfo) {
     desciconTab.src      = `https://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
 }
 
-// ─── Error Display ─────────────────────────────────────────────────────
 function showError(message) {
     errorMsg.innerText = message;
     errorContainer.classList.add("active");
 }
 
-// ─── Grant Location Button ─────────────────────────────────────────────
 const grantAccessBtn = document.querySelector(".btn");
 grantAccessBtn.addEventListener("click", getlocation);
 
@@ -165,7 +152,6 @@ function showPosition(position) {
     fetchUserWeatherInfo(userCoordinates);
 }
 
-// ─── Search Form ────────────────────────────────────────────────────────
 const searchInput = document.querySelector("[data-searchInput]");  // FIX: added missing ]
 
 searchformview.addEventListener("submit", (e) => {
