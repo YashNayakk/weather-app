@@ -1,3 +1,6 @@
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+
+
 const yourweatherContainer = document.querySelector("[data-yourWeather]");
 const yourTab              = document.querySelector("[data-your]");
 const searchTab            = document.querySelector("[data-search]");
@@ -6,8 +9,6 @@ const loadingTab           = document.querySelector("[data-loading]");
 const searchformview       = document.querySelector("[data-searchform]");   // FIX: added missing ]
 const errorContainer       = document.querySelector("[data-error]");
 const errorMsg             = document.querySelector("[data-errorMsg]");
-
-const API_KEY = "d1845658f92b31c64bd94f06f7188c9c";
 
 let currentTab = yourTab;
 currentTab.classList.add("current-tab");
